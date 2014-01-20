@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 所有的字符都应该是半角的，请注意 -->
+<config>
+	<!-- 游戏版本号，随游戏版本更新而更改 -->
+	<gameversion>2.5.0</gameversion>
+
+	<!--填写用户名，必填 -->
+	<username></username>
+
+	<!--填写密码，推荐置空，启动程序时会提示输入 -->
+	<password></password>
+
+	<!-- 以下选项未特别说明，选“是”则填1，选“否”则填0 -->
+	<option>
+		<!-- 优先进行妖精战 -->
+		<fairy_battle_first>1</fairy_battle_first>
+
+		<!-- BC不足FairyDeck的BC时，依旧跑图 -->
+		<allow_bc_insuffient>1</allow_bc_insuffient>
+
+		<!-- 跑日常图（给红绿试管的两张图） -->
+		<daily_map>0</daily_map>
+
+		<!-- 日常图编号（英文逗号分隔），每周更新后请咨询开发人员，填错了就不会跑了 -->
+		<daily_map_no>50001,50002,50003,50004,50005,50006,50007,50008,50009,50010
+		</daily_map_no>
+
+		<!-- 表图跑最低AP的图 -->
+		<min_ap_only>1</min_ap_only>
+
+		<!-- 里图跑最低AP的图 -->
+		<min_ap_only_inner>1</min_ap_only_inner>
+
+		<!-- 优先跑里图，置0时只跑表图 -->
+		<inner_map_first>1</inner_map_first>
+
+		<!-- 只跑里图（用于某些活动） -->
+		<inner_map_only>0</inner_map_only>
+
+		<!-- 第一张里图编号，每周更新后请咨询开发人员，若不清楚请填0 -->
+		<!-- 填0时，所有图都按表图逻辑进行处理 -->
+		<first_inner_map_no>107401</first_inner_map_no>
+
+		<!-- 是否每隔5分钟刷新地图列表（适用限时秘境活动） -->
+		<auto_refresh_map>0</auto_refresh_map>
+
+		<!-- 升级自动加点：自动加BC填0，自动加AP填1 -->
+		<auto_add_point>0</auto_add_point>
+
+		<!-- 自己妖怪未打死前不继续探索 -->
+		<stop_explore_when_fairy_alive>1</stop_explore_when_fairy_alive>
+
+		<!-- 优先打剩余时间小的妖精 -->
+		<less_time_fairy_first>1</less_time_fairy_first>
+
+		<!-- 是否自动收箱子（每次登录或收妖精战礼物时箱子内物品数超600） -->
+		<auto_receive_box>1</auto_receive_box>
+
+		<!-- 登录时自动消耗伴点 -->
+		<drop_friendship_point>0</drop_friendship_point>
+
+		<!-- 调试开关，开发人员专用，玩家请勿修改 -->
+		<debug>0</debug>
+	</option>
+
+	<!-- 固定跑图，开启后上面跑图相关信息无效 -->
+	<!-- 若配置错误可能会导致无限重启等问题 -->
+	<map>
+		<!-- 开启为1，关闭为0 -->
+		<enable>0</enable>
+		<id></id>
+		<cost></cost>
+	</map>
+
+	<!-- 下面为嗑药设定 -->
+	<use>
+		<auto_use_ap>0</auto_use_ap><!-- 自动吃AP药 -->
+		<auto_use_bc>0</auto_use_bc><!-- 自动吃BC药 -->
+		<strategy>
+			<ap>
+				<low>5</low><!-- 低于此值吃药 -->
+				<half>1</half><!-- 0:只吃全药; 1:只吃半药; 2:都吃(先吃半药，再吃全药) -->
+				<full_low>100</full_low><!-- 保留这点全药 -->
+			</ap>
+			<bc>
+				<low>50</low><!-- 低于此值吃药 -->
+				<half>1</half><!-- 0:只吃全药; 1:只吃半药; 2:都吃(先吃半药，再吃全药) -->
+				<full_low>100</full_low><!-- 保留这点全药 -->
+			</bc>
+		</strategy>
+	</use>
+
+	<!-- 下列各项中no表示卡组号 -->
+	<!-- 0：卡组1 -->
+	<!-- 1：卡组2 -->
+	<!-- 2：卡组3 -->
+	<!-- 3：推荐卡组 -->
+	<!-- bc表示使用该卡组所需的BC -->
+	<deck>
+		<!-- FairyDeck：舔妖卡組 -->
+		<deck_profile>
+			<name>FairyDeck</name>
+			<no>0</no>
+			<bc>0</bc>
+		</deck_profile>
+
+		<!-- KODeck: 尾刀卡組(血量通过hp_kill设置，设为0以下此卡组无效) -->
+		<deck_profile>
+			<name>KODeck</name>
+			<no>0</no>
+			<bc>0</bc>
+			<hp_kill>0</hp_kill>
+		</deck_profile>
+
+		<!-- RareFairyDeck：打觉醒卡組，或0BC活动时卡组 -->
+		<deck_profile>
+			<name>RareFairyDeck</name>
+			<no>0</no>
+			<bc>0</bc>
+		</deck_profile>
+
+		<!-- GuildFairyDeck：打外敌卡組 -->
+		<deck_profile>
+			<name>GuildFairyDeck</name>
+			<no>3</no>
+			<bc>0</bc>
+		</deck_profile>
+	</deck>
+
+	<!-- 本项是用来卖卡的，以供长期挂机。 id是卡片的id，可自己添加，参考wiki：http://zh.kssma.wikia.com/wiki/%E5%8D%A1%E7%89%8C -->
+	<!-- 如需禁止自动卖卡，请将enable项设为0 -->
+	<sell_card>
+		<enable>0</enable>
+		<!-- 最高自动卖卡价格，小于等于该价格且不满足特定条件的卡会被自动卖掉，不受下面ID的限制 -->
+		<!-- 参考：四星及伪五星价格3300，五星价格3W5，特殊五星价格7W -->
+		<max_card_money>3300</max_card_money>
+		<id>2</id>
+		<id>15</id>
+		<id>16</id>
+		<id>22</id>
+		<id>33</id>
+		<id>34</id>
+		<id>36</id>
+		<id>37</id>
+		<id>43</id>
+		<id>52</id>
+		<id>53</id>
+		<id>76</id>
+		<id>82</id>
+		<id>86</id>
+		<id>90</id>
+		<id>91</id>
+		<id>99</id>
+		<id>105</id>
+		<id>109</id>
+		<id>154</id>
+		<id>158</id>
+		<id>160</id>
+		<id>176</id>
+		<id>177</id>
+		<id>178</id>
+		<id>215</id>
+		<id>219</id>
+		<id>260</id>
+		<id>268</id>
+		<id>270</id>
+		<id>271</id>
+		<id>276</id>
+		<id>290</id>
+		<id>291</id>
+		<id>292</id>
+		<id>293</id>
+		<id>295</id>
+		<id>302</id>
+		<id>314</id>
+		<id>322</id>
+		<id>326</id>
+		<id>327</id>
+		<id>328</id>
+		<id>332</id>
+		<id>334</id>
+		<id>342</id>
+		<id>343</id>
+		<id>344</id>
+		<id>346</id>
+		<id>357</id>
+		<id>358</id>
+		<id>369</id>
+		<id>376</id>
+		<id>379</id>
+		<id>382</id>
+		<id>414</id>
+		<id>418</id>
+		<id>426</id>
+		<id>435</id>
+		<id>439</id>
+		<id>449</id>
+		<id>459</id>
+		<id>460</id>
+		<id>461</id>
+		<id>462</id>
+		<id>484</id>
+		<id>485</id>
+		<id>497</id>
+		<id>499</id>
+		<id>509</id>
+		<id>555</id>
+		<id>558</id>
+		<id>632</id>
+		<id>633</id>
+		<id>634</id>
+		<id>635</id>
+		<id>636</id>
+		<id>001</id>
+		<id>027</id>
+		<id>123</id>
+		<id>213</id>
+		<id>324</id>
+		<id>028</id>
+		<id>121</id>
+		<id>301</id>
+		<id>048</id>
+		<id>077</id>
+		<id>128</id>
+		<id>148</id>
+		<id>180</id>
+		<id>315</id>
+		<id>072</id>
+		<id>157</id>
+		<id>175</id>
+		<id>442</id>
+		<id>589</id>
+		<id>038</id>
+		<id>055</id>
+		<id>096</id>
+		<id>637</id>
+		<id>063</id>
+		<id>221</id>
+		<id>477</id>
+		<id>506</id>
+		<id>294</id>
+		<id>110</id>
+		<id>319</id>
+		<id>385</id>
+		<id>277</id>
+		<id>258</id>
+		<id>390</id><!-- 蓝切利 -->
+		<id>391</id><!-- 红切利 -->
+		<id>124</id><!-- 狼娘 -->
+		<id>142</id><!-- 牛仔 -->
+		<id>49</id><!-- 女仆 -->
+	</sell_card>
+</config>
